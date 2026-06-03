@@ -5,6 +5,7 @@ import { EmptyDocument } from './components/EmptyStates'
 import { Sidebar } from './components/Sidebar'
 import { Topbar } from './components/Topbar'
 import { documents } from './data/documents'
+import { useTheme } from './hooks/useTheme'
 import { buildTree, collectFiles, collectFolderIds, filterTree } from './utils/tree'
 
 const documentTree = buildTree(documents)
@@ -15,6 +16,7 @@ function App() {
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(initialExpandedFolders)
   const [query, setQuery] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const { resolvedTheme, toggleTheme } = useTheme()
 
   const filteredTree = useMemo(() => filterTree(documentTree, query), [query])
   const activeFile = useMemo(
@@ -39,7 +41,9 @@ function App() {
     <main className="app-shell">
       <Topbar
         activePath={activeFile?.path}
+        resolvedTheme={resolvedTheme}
         sidebarOpen={sidebarOpen}
+        onToggleTheme={toggleTheme}
         onToggleSidebar={() => setSidebarOpen((open) => !open)}
       />
 
