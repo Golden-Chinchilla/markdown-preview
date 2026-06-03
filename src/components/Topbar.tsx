@@ -2,7 +2,7 @@ import { BookOpenText, Moon, PanelLeftClose, PanelLeftOpen, Sun } from 'lucide-r
 import type { ResolvedTheme } from '../hooks/useTheme'
 
 type TopbarProps = {
-  activePath?: string
+  activeLabel?: string
   resolvedTheme: ResolvedTheme
   sidebarOpen: boolean
   onToggleTheme: () => void
@@ -10,7 +10,7 @@ type TopbarProps = {
 }
 
 export function Topbar({
-  activePath,
+  activeLabel,
   resolvedTheme,
   sidebarOpen,
   onToggleTheme,
@@ -27,7 +27,7 @@ export function Topbar({
           </div>
           <div>
             <h1>Marktab</h1>
-            <p>{activePath ?? '没有找到 Markdown 文档'}</p>
+            <p>{activeLabel ?? '没有找到 Markdown 文档'}</p>
           </div>
         </div>
         <button

@@ -13,3 +13,10 @@ export type TreeNode = {
   children: TreeNode[]
   file?: MarkdownFile
 }
+
+export type HeadingNode = {
+  id: string
+  text: string
+  depth: 1 | 2 | 3
+  children: HeadingNode[]
+}
