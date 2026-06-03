@@ -20,14 +20,25 @@ export function Topbar({
 
   return (
     <header className="topbar">
-      <div className="brand">
-        <div className="brand-mark">
-          <BookOpenText aria-hidden="true" size={20} />
+      <div className="topbar-left">
+        <div className="brand">
+          <div className="brand-mark">
+            <BookOpenText aria-hidden="true" size={20} />
+          </div>
+          <div>
+            <h1>Marktab</h1>
+            <p>{activePath ?? '没有找到 Markdown 文档'}</p>
+          </div>
         </div>
-        <div>
-          <h1>Marktab</h1>
-          <p>{activePath ?? '没有找到 Markdown 文档'}</p>
-        </div>
+        <button
+          className="icon-button"
+          type="button"
+          aria-label={sidebarOpen ? '收起目录' : '展开目录'}
+          title={sidebarOpen ? '收起目录' : '展开目录'}
+          onClick={onToggleSidebar}
+        >
+          {sidebarOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
+        </button>
       </div>
       <div className="topbar-actions">
         <button
@@ -38,15 +49,6 @@ export function Topbar({
           onClick={onToggleTheme}
         >
           {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-        <button
-          className="icon-button"
-          type="button"
-          aria-label={sidebarOpen ? '收起目录' : '展开目录'}
-          title={sidebarOpen ? '收起目录' : '展开目录'}
-          onClick={onToggleSidebar}
-        >
-          {sidebarOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
         </button>
       </div>
     </header>
